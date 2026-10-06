@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap');
+
+:root {
+  --primary: #1e5bd8;
+  --primary-dark: #123a8f;
+  --primary-light: #e8f0fe;
+  --accent: #f59e0b;
+  --success: #16a34a;
+  --danger: #dc2626;
+  --info: #0284c7;
+  --warning: #d97706;
+  --bg: #f4f7fb;
+  --card-bg: #ffffff;
+  --text: #1f2937;
+  --text-muted: #6b7280;
+  --border-color: #e5e7eb;
+  
+  --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 25px rgba(30, 91, 216, 0.12);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}

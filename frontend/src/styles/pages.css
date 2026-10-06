@@ -1,0 +1,74 @@
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, #123a8f 0%, #1e5bd8 50%, #3b82f6 100%);
+  color: white;
+  padding: 5rem 0 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-title {
+  font-size: 3.2rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  opacity: 0.95;
+  margin-bottom: 0.5rem;
+}
+
+.hero-tagline {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fde047;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+/* Split-screen login / register */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+}
+
+.auth-brand-side {
+  flex: 1;
+  background: linear-gradient(135deg, #123a8f 0%, #1e5bd8 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem;
+}
+
+.auth-form-side {
+  width: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  background: white;
+}
+
+.auth-card {
+  width: 100%;
+}
+
+@media (max-width: 991px) {
+  .auth-container {
+    flex-direction: column;
+  }
+  .auth-brand-side {
+    padding: 2rem;
+  }
+  .auth-form-side {
+    width: 100%;
+    padding: 2rem;
+  }
+}

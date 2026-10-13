@@ -1,6 +1,16 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api';
+// The Render blueprint names the backend service "careerbridge-api".
+// Ignore common placeholder URLs accidentally left in the frontend environment.
+const configuredApiUrl = import.meta.env.VITE_API_BASE_URL?.trim();
+const isPlaceholderUrl =
+  !configuredApiUrl ||
+  configuredApiUrl.includes('your-backend.onrender.com') ||
+  configuredApiUrl.includes('your-backend-url');
+
+const API_BASE_URL = isPlaceholderUrl
+  ? 'https://careerbridge-api.onrender.com/api'
+  : configuredApiUrl.replace(/\/+$/, '');
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -9,7 +19,7 @@ const api = axios.create({
   },
 });
 
-// Request interceptor for API calls
+// Attach the saved JWT to authenticated API requests.
 api.interceptors.request.use(
   (config) => {
     const user = JSON.parse(localStorage.getItem('cb_user') || 'null');
@@ -18,22 +28,25 @@ api.interceptors.request.use(
     }
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
-// Response interceptor for handling 401 and errors
+// Handle expired or invalid sessions.
 api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
       localStorage.removeItem('cb_user');
-      if (window.location.pathname !== '/login' && window.location.pathname !== '/register' && window.location.pathname !== '/') {
+      if (
+        window.location.pathname !== '/login' &&
+        window.location.pathname !== '/register' &&
+        window.location.pathname !== '/'
+      ) {
         window.location.href = '/login';
       }
     }
-    const message = error.response?.data?.message || error.message || 'Something went wrong';
+    const message =
+      error.response?.data?.message || error.message || 'Something went wrong';
     return Promise.reject(new Error(message));
   }
 );

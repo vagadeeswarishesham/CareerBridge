@@ -4,7 +4,7 @@ services:
     runtime: docker
     dockerfilePath: ./backend/Dockerfile
     dockerContext: ./backend
-    healthCheckPath: /
+    healthCheckPath: /api/jobs
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: h2
